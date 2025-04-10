@@ -138,7 +138,7 @@ def apply_custom_styles():
             --dark-bg: #ffffff;
             --darker-bg: #f8f9fa;
             --card-bg: #ffffff;
-            --text: #31333F;
+            --text: #f7f5fa;
             --text-muted: #6c757d;
         }
         
@@ -456,20 +456,23 @@ def login_ui():
             submitted = st.form_submit_button("Login", use_container_width=True)
 
             if submitted:
-                user = get_user(username)
-                if user and verify_password(password, user[1]):
-                    st.session_state.logged_in = True
-                    st.session_state.username = username
-                    st.session_state.failed_attempts = 0
-                    st.success("✅ Login successful! Redirecting...")
-                    time.sleep(1)
-                    st.rerun()
+                if not username or not password:
+                    st.error("Both username and password are required")
                 else:
-                    st.session_state.failed_attempts += 1
-                    st.error(f"❌ Invalid credentials. Attempt {st.session_state.failed_attempts}/3")
-                    if st.session_state.failed_attempts >= 3:
-                        st.session_state.lockout_time = time.time()
+                    user = get_user(username)
+                    if user and verify_password(password, user[1]):
+                        st.session_state.logged_in = True
+                        st.session_state.username = username
+                        st.session_state.failed_attempts = 0
+                        st.success("✅ Login successful! Redirecting...")
+                        time.sleep(1)
                         st.rerun()
+                    else:
+                        st.session_state.failed_attempts += 1
+                        st.error(f"❌ Invalid credentials. Attempt {st.session_state.failed_attempts}/3")
+                        if st.session_state.failed_attempts >= 3:
+                            st.session_state.lockout_time = time.time()
+                            st.rerun()
         
         st.markdown("<div style='text-align: center; margin-top: 20px;'>", unsafe_allow_html=True)
         st.markdown("Don't have an account?")
@@ -503,7 +506,9 @@ def register_ui():
             submitted = st.form_submit_button("Register", use_container_width=True)
 
             if submitted:
-                if password != confirm:
+                if not username or not password or not confirm:
+                    st.error("All fields are required")
+                elif password != confirm:
                     st.error("Passwords do not match")
                 elif get_user(username):
                     st.error("Username already exists")
