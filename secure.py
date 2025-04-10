@@ -137,7 +137,7 @@ def apply_custom_styles():
         --info: #17a2b8;
     }
     
-    /* Light theme overrides */
+    /* Light theme overrides - Updated to match WhatsApp image */
     @media (prefers-color-scheme: light) {
         :root {
             --dark-bg: #ffffff;
@@ -147,47 +147,73 @@ def apply_custom_styles():
             --text-muted: #6c757d;
         }
         
-        /* Sidebar in light mode */
+        /* Sidebar in light mode - Updated to match image */
         [data-testid="stSidebar"] {
             background: #ffffff !important;
-            border-right: 1px solid #e9ecef !important;
+            border-right: 1px solid #e0e0e0 !important;
+            padding: 1rem !important;
         }
         
-        /* Sidebar header in light mode */
+        /* Sidebar header in light mode - Updated to match image */
         .sidebar-header {
-            border-bottom: 1px solid #e9ecef !important;
+            border-bottom: 1px solid #e0e0e0 !important;
+            padding-bottom: 1rem !important;
+            margin-bottom: 1.5rem !important;
         }
         
-        /* Sidebar navigation items in light mode */
+        /* User avatar in light mode - Updated to match image */
+        .user-avatar {
+            width: 50px !important;
+            height: 50px !important;
+            font-size: 20px !important;
+            margin-bottom: 0.5rem !important;
+        }
+        
+        /* User name in light mode - Updated to match image */
+        .user-name {
+            font-size: 1rem !important;
+            margin-bottom: 0 !important;
+        }
+        
+        /* Sidebar navigation items in light mode - Updated to match image */
         [data-testid="stSidebarNav"] > div > ul > li > div {
             background-color: transparent !important;
             color: var(--text) !important;
-            border-left: 3px solid transparent;
+            border-left: none !important;
+            padding: 0.5rem 0 !important;
+            margin: 0.5rem 0 !important;
+            border-radius: 0 !important;
         }
         
         [data-testid="stSidebarNav"] > div > ul > li > div:hover {
-            background-color: #f8f9fa !important;
-            border-left: 3px solid var(--primary);
+            background-color: transparent !important;
+            color: var(--primary) !important;
         }
         
         [data-testid="stSidebarNav"] > div > ul > li > div > a {
-            color: var(--text) !important;
+            color: inherit !important;
+            font-weight: 500 !important;
+            gap: 0.5rem !important;
         }
         
-        /* Selected menu item in light mode */
+        /* Selected menu item in light mode - Updated to match image */
         [data-testid="stSidebarNav"] > div > ul > li > div[data-baseweb="radio"] {
-            background-color: #f8f9fa !important;
-            border-left: 3px solid var(--primary);
+            background-color: transparent !important;
+            color: var(--primary) !important;
+            font-weight: 600 !important;
         }
         
-        /* Sidebar divider in light mode */
+        /* Sidebar divider in light mode - Updated to match image */
         .sidebar-divider {
-            background: #e9ecef !important;
+            background: #e0e0e0 !important;
+            margin: 1.5rem 0 !important;
         }
         
-        /* User avatar in light mode */
-        .user-avatar {
-            color: white !important;
+        /* Sidebar footer in light mode - Updated to match image */
+        .sidebar-footer {
+            color: var(--text-muted) !important;
+            font-size: 0.7rem !important;
+            margin-top: 2rem !important;
         }
         
         /* Input fields in light mode */
@@ -210,7 +236,7 @@ def apply_custom_styles():
         color: var(--text);
     }
     
-    /* Enhanced Sidebar Styling */
+    /* Enhanced Sidebar Styling - Dark theme remains unchanged */
     [data-testid="stSidebar"] {
         background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%) !important;
         color: white !important;
@@ -299,11 +325,6 @@ def apply_custom_styles():
         font-size: 1.1rem;
         font-weight: 600;
         margin-bottom: 0.25rem;
-    }
-    
-    .user-email {
-        font-size: 0.85rem;
-        opacity: 0.8;
     }
     
     /* Sidebar footer */
@@ -559,7 +580,7 @@ def register_ui():
 def home_page():
     apply_custom_styles()
     
-    # Enhanced Sidebar navigation
+    # Enhanced Sidebar navigation - Updated to match WhatsApp image
     with st.sidebar:
         # User profile section
         st.markdown(f"""
@@ -623,10 +644,10 @@ def home_page():
             <div class='card'>
                 <h4>🔒 Encryption Tips</h4>
                 <ul>
-                    <li>Use a strong, unique passkey that you can remember</li>
-                    <li>Never share your passkey with anyone</li>
-                    <li>The same passkey is required to decrypt your data</li>
-                    <li>For maximum security, use a passphrase instead of a simple password</li>
+                    <li>Use a strong, unique passkey that you can remember.</li>
+                    <li>Never share your passkey with anyone.</li>
+                    <li>The same passkey is required to decrypt your data.</li>
+                    <li>For maximum security, use a passphrase instead of a simple password.</li>
                 </ul>
             </div>
             """, unsafe_allow_html=True)
