@@ -146,6 +146,27 @@ def apply_custom_styles():
             background: white !important;
             border-right: 1px solid #e0e0e0 !important;
             padding: 16px !important;
+            color: var(--text) !important;
+        }
+        
+        [data-testid="stSidebar"] * {
+            color: var(--text) !important;
+        }
+        
+        [data-testid="stSidebarNav"] > div > ul > li > div > a,
+        [data-testid="stSidebarNav"] > div > ul > li > div > span {
+            color: var(--text) !important;
+        }
+        
+        [data-testid="stSidebarNav"] > div > ul > li > div:hover > a,
+        [data-testid="stSidebarNav"] > div > ul > li > div:hover > span {
+            color: var(--primary) !important;
+        }
+        
+        [data-testid="stSidebarNav"] > div > ul > li > div[data-baseweb="radio"] > a,
+        [data-testid="stSidebarNav"] > div > ul > li > div[data-baseweb="radio"] > span {
+            color: var(--primary) !important;
+            font-weight: 600;
         }
         
         .sidebar-header {
@@ -160,6 +181,7 @@ def apply_custom_styles():
             height: 50px !important;
             font-size: 20px !important;
             margin-bottom: 8px !important;
+            color: white !important;
         }
         
         .user-name {
@@ -590,8 +612,8 @@ def home_page():
             <div class='card'>
                 <h4>🔒 Encryption Tips</h4>
                 <ul>
-                    <li>Use a strong, unique passkey that you can remember</li>
-                    <li>Never share your passkey with anyone</li>
+                    <li>Use a strong, unique passkey that you can remember.</li>
+                    <li>Never share your passkey with anyone.</li>
                     <li>The same passkey is required to decrypt your data</li>
                     <li>For maximum security, use a passphrase instead of a simple password</li>
                 </ul>
