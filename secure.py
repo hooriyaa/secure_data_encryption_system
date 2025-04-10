@@ -17,11 +17,9 @@ def init_db():
         conn = sqlite3.connect(db_path)
         c = conn.cursor()
         
-        # Create users table
         c.execute('''CREATE TABLE IF NOT EXISTS users
                      (username TEXT PRIMARY KEY, password_hash TEXT)''')
         
-        # Create user_data table
         c.execute('''CREATE TABLE IF NOT EXISTS user_data
                      (id INTEGER PRIMARY KEY AUTOINCREMENT,
                       username TEXT,
@@ -74,7 +72,7 @@ def create_user(username, password):
         conn.commit()
         return True
     except sqlite3.IntegrityError:
-        return False  # Username already exists
+        return False
     finally:
         conn.close()
 
@@ -115,14 +113,12 @@ if "lockout_time" not in st.session_state:
 if "show_register" not in st.session_state:
     st.session_state.show_register = False
 
-# Initialize database
 init_db()
 
 # ------------------ UI Functions ------------------
 def apply_custom_styles():
     st.markdown("""
     <style>
-    /* Default to dark theme but respect Streamlit's theme */
     :root {
         --primary: #6a11cb;
         --secondary: #2575fc;
@@ -137,7 +133,6 @@ def apply_custom_styles():
         --info: #17a2b8;
     }
     
-    /* Light theme overrides - Updated to match WhatsApp image */
     @media (prefers-color-scheme: light) {
         :root {
             --dark-bg: #ffffff;
@@ -147,96 +142,77 @@ def apply_custom_styles():
             --text-muted: #6c757d;
         }
         
-        /* Sidebar in light mode - Updated to match image */
         [data-testid="stSidebar"] {
-            background: #ffffff !important;
+            background: white !important;
             border-right: 1px solid #e0e0e0 !important;
-            padding: 1rem !important;
+            padding: 16px !important;
         }
         
-        /* Sidebar header in light mode - Updated to match image */
         .sidebar-header {
+            text-align: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
             border-bottom: 1px solid #e0e0e0 !important;
-            padding-bottom: 1rem !important;
-            margin-bottom: 1.5rem !important;
         }
         
-        /* User avatar in light mode - Updated to match image */
         .user-avatar {
             width: 50px !important;
             height: 50px !important;
             font-size: 20px !important;
-            margin-bottom: 0.5rem !important;
+            margin-bottom: 8px !important;
         }
         
-        /* User name in light mode - Updated to match image */
         .user-name {
-            font-size: 1rem !important;
+            font-size: 16px !important;
+            font-weight: 600;
             margin-bottom: 0 !important;
+            color: var(--text) !important;
         }
         
-        /* Sidebar navigation items in light mode - Updated to match image */
         [data-testid="stSidebarNav"] > div > ul > li > div {
-            background-color: transparent !important;
+            background: transparent !important;
             color: var(--text) !important;
-            border-left: none !important;
-            padding: 0.5rem 0 !important;
-            margin: 0.5rem 0 !important;
+            padding: 8px 0 !important;
+            margin: 4px 0 !important;
             border-radius: 0 !important;
+            border-left: none !important;
         }
         
         [data-testid="stSidebarNav"] > div > ul > li > div:hover {
-            background-color: transparent !important;
+            background: transparent !important;
             color: var(--primary) !important;
         }
         
-        [data-testid="stSidebarNav"] > div > ul > li > div > a {
-            color: inherit !important;
-            font-weight: 500 !important;
-            gap: 0.5rem !important;
-        }
-        
-        /* Selected menu item in light mode - Updated to match image */
         [data-testid="stSidebarNav"] > div > ul > li > div[data-baseweb="radio"] {
-            background-color: transparent !important;
+            background: transparent !important;
             color: var(--primary) !important;
-            font-weight: 600 !important;
+            font-weight: 600;
         }
         
-        /* Sidebar divider in light mode - Updated to match image */
         .sidebar-divider {
             background: #e0e0e0 !important;
-            margin: 1.5rem 0 !important;
+            margin: 24px 0 !important;
         }
         
-        /* Sidebar footer in light mode - Updated to match image */
         .sidebar-footer {
+            font-size: 12px !important;
             color: var(--text-muted) !important;
-            font-size: 0.7rem !important;
-            margin-top: 2rem !important;
+            margin-top: 24px !important;
+            opacity: 1 !important;
         }
         
-        /* Input fields in light mode */
         .stTextInput input, .stTextArea textarea {
             background-color: var(--darker-bg) !important;
             color: var(--text) !important;
             border: 1px solid #ced4da !important;
         }
         
-        /* Cards in light mode */
         .card {
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             border: 1px solid #e9ecef;
         }
     }
     
-    /* Main container - respects theme */
-    .main {
-        background-color: var(--dark-bg);
-        color: var(--text);
-    }
-    
-    /* Enhanced Sidebar Styling - Dark theme remains unchanged */
     [data-testid="stSidebar"] {
         background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%) !important;
         color: white !important;
@@ -244,7 +220,6 @@ def apply_custom_styles():
         box-shadow: 2px 0 10px rgba(0,0,0,0.3);
     }
     
-    /* Sidebar header */
     .sidebar-header {
         text-align: center;
         margin-bottom: 2rem;
@@ -252,7 +227,6 @@ def apply_custom_styles():
         border-bottom: 1px solid rgba(255,255,255,0.1);
     }
     
-    /* Sidebar navigation items */
     [data-testid="stSidebarNav"] > div > ul {
         padding-left: 0;
         margin-top: 0;
@@ -280,31 +254,20 @@ def apply_custom_styles():
         text-decoration: none;
     }
     
-    /* Selected menu item */
     [data-testid="stSidebarNav"] > div > ul > li > div[data-baseweb="radio"] {
         background-color: rgba(100,149,237,0.3) !important;
         box-shadow: 0 0 0 1px rgba(255,255,255,0.1);
     }
     
-    /* Sidebar radio buttons (for menu) */
     [data-testid="stSidebar"] .stRadio > div {
         flex-direction: column;
         gap: 0.5rem;
     }
     
-    /* Sidebar divider */
     .sidebar-divider {
         height: 1px;
         background: rgba(255,255,255,0.1);
         margin: 1.5rem 0;
-    }
-    
-    /* User profile section */
-    .user-profile {
-        text-align: center;
-        margin-top: auto;
-        padding-top: 1.5rem;
-        border-top: 1px solid rgba(255,255,255,0.1);
     }
     
     .user-avatar {
@@ -327,7 +290,6 @@ def apply_custom_styles():
         margin-bottom: 0.25rem;
     }
     
-    /* Sidebar footer */
     .sidebar-footer {
         font-size: 0.75rem;
         text-align: center;
@@ -335,7 +297,6 @@ def apply_custom_styles():
         opacity: 0.6;
     }
     
-    /* Input fields */
     .stTextInput input, .stTextArea textarea {
         background-color: var(--darker-bg) !important;
         color: var(--text) !important;
@@ -344,7 +305,6 @@ def apply_custom_styles():
         padding: 10px;
     }
     
-    /* Buttons */
     .stButton>button {
         border: none;
         border-radius: 8px;
@@ -360,7 +320,6 @@ def apply_custom_styles():
         box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
     
-    /* Alerts */
     .stAlert .st-b7 {
         background-color: rgba(40, 167, 69, 0.2) !important;
         color: var(--text) !important;
@@ -382,7 +341,6 @@ def apply_custom_styles():
         border-left: 4px solid var(--info);
     }
     
-    /* Cards */
     .card {
         background: var(--card-bg);
         border-radius: 12px;
@@ -392,7 +350,6 @@ def apply_custom_styles():
         color: var(--text);
     }
     
-    /* Data display card */
     .data-card {
         background: var(--darker-bg);
         border-radius: 8px;
@@ -401,7 +358,6 @@ def apply_custom_styles():
         border-left: 4px solid var(--secondary);
     }
     
-    /* Decrypted content */
     .decrypted-content {
         background-color: var(--darker-bg) !important;
         color: var(--text) !important;
@@ -413,12 +369,10 @@ def apply_custom_styles():
         word-wrap: break-word;
     }
     
-    /* Headers */
     h1, h2, h3, h4, h5, h6 {
         color: var(--text) !important;
     }
     
-    /* Lockout message */
     .lockout {
         background-color: rgba(253, 126, 20, 0.2);
         color: var(--text);
@@ -429,12 +383,10 @@ def apply_custom_styles():
         border-left: 4px solid var(--warning);
     }
     
-    /* Text elements */
     p, div {
         color: var(--text);
     }
     
-    /* Custom scrollbar */
     ::-webkit-scrollbar {
         width: 8px;
     }
@@ -452,7 +404,6 @@ def apply_custom_styles():
         background: var(--secondary);
     }
     
-    /* Empty state */
     .empty-state {
         text-align: center;
         padding: 40px 20px;
@@ -463,7 +414,6 @@ def apply_custom_styles():
 def login_ui():
     apply_custom_styles()
     
-    # Hero section
     col1, col2 = st.columns([2, 1])
     with col1:
         st.markdown("""
@@ -494,7 +444,6 @@ def login_ui():
             st.rerun()
         return
 
-    # Login form in a card
     with st.container():
         st.markdown("<div class='card'>", unsafe_allow_html=True)
         
@@ -534,7 +483,6 @@ def login_ui():
 def register_ui():
     apply_custom_styles()
     
-    # Hero section
     col1, col2 = st.columns([2, 1])
     with col1:
         st.markdown("""
@@ -544,7 +492,6 @@ def register_ui():
         </div>
         """, unsafe_allow_html=True)
     
-    # Registration form in a card
     with st.container():
         st.markdown("<div class='card'>", unsafe_allow_html=True)
         
@@ -580,9 +527,7 @@ def register_ui():
 def home_page():
     apply_custom_styles()
     
-    # Enhanced Sidebar navigation - Updated to match WhatsApp image
     with st.sidebar:
-        # User profile section
         st.markdown(f"""
         <div class="sidebar-header">
             <div class="user-avatar">
@@ -592,10 +537,8 @@ def home_page():
         </div>
         """, unsafe_allow_html=True)
         
-        # Menu divider
         st.markdown('<div class="sidebar-divider"></div>', unsafe_allow_html=True)
         
-        # Navigation menu
         menu = st.radio(
             "Navigation",
             ["Encrypt Data", "Retrieve Data", "Logout"],
@@ -607,7 +550,6 @@ def home_page():
             }[x]
         )
         
-        # Footer
         st.markdown("""
         <div class="sidebar-footer">
             Secure Vault v1.0<br>
@@ -615,7 +557,6 @@ def home_page():
         </div>
         """, unsafe_allow_html=True)
     
-    # Main content area
     st.markdown(f"# 🔐 Secure Vault")
     st.markdown(f"Welcome back, **{st.session_state.username}**! What would you like to do today?")
     
@@ -639,15 +580,14 @@ def home_page():
             
             st.markdown("</div>", unsafe_allow_html=True)
             
-            # Encryption tips
             st.markdown("""
             <div class='card'>
                 <h4>🔒 Encryption Tips</h4>
                 <ul>
-                    <li>Use a strong, unique passkey that you can remember.</li>
-                    <li>Never share your passkey with anyone.</li>
-                    <li>The same passkey is required to decrypt your data.</li>
-                    <li>For maximum security use a passphrase instead of a simple password.</li>
+                    <li>Use a strong, unique passkey that you can remember</li>
+                    <li>Never share your passkey with anyone</li>
+                    <li>The same passkey is required to decrypt your data</li>
+                    <li>For maximum security, use a passphrase instead of a simple password</li>
                 </ul>
             </div>
             """, unsafe_allow_html=True)
@@ -695,7 +635,6 @@ def home_page():
         time.sleep(1)
         st.rerun()
 
-# ------------------ Main Logic ------------------
 def main():
     st.set_page_config(
         page_title="Secure Vault",
