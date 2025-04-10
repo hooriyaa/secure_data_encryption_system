@@ -122,7 +122,7 @@ init_db()
 def apply_custom_styles():
     st.markdown("""
     <style>
-    /* Dark theme */
+    /* Default to dark theme but respect Streamlit's theme */
     :root {
         --primary: #6a11cb;
         --secondary: #2575fc;
@@ -137,14 +137,57 @@ def apply_custom_styles():
         --info: #17a2b8;
     }
     
-    /* Main container */
+    /* Light theme overrides */
+    @media (prefers-color-scheme: light) {
+        :root {
+            --dark-bg: #ffffff;
+            --darker-bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text: #31333F;
+            --text-muted: #6c757d;
+        }
+        
+        /* Input fields in light mode */
+        .stTextInput input, .stTextArea textarea {
+            background-color: var(--darker-bg) !important;
+            color: var(--text) !important;
+            border: 1px solid #ced4da !important;
+        }
+        
+        /* Cards in light mode */
+        .card {
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #e9ecef;
+        }
+        
+        /* Sidebar in light mode */
+        [data-testid="stSidebar"] {
+            background: #f8f9fa !important;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+        
+        /* Sidebar navigation items in light mode */
+        [data-testid="stSidebarNav"] > div > ul > li > div {
+            background-color: rgba(0,0,0,0.05) !important;
+        }
+        
+        [data-testid="stSidebarNav"] > div > ul > li > div:hover {
+            background-color: rgba(0,0,0,0.1) !important;
+        }
+        
+        [data-testid="stSidebarNav"] > div > ul > li > div > a {
+            color: var(--text) !important;
+        }
+    }
+    
+    /* Main container - respects theme */
     .main {
         background-color: var(--dark-bg);
         color: var(--text);
     }
     
     /* Enhanced Sidebar Styling */
-     [data-testid="stSidebar"] {
+    [data-testid="stSidebar"] {
         background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%) !important;
         color: white !important;
         padding: 1rem;
@@ -381,7 +424,7 @@ def login_ui():
         st.markdown("""
         <div style='padding: 20px 0;'>
             <h1 style='color: #2575fc; margin-bottom: 10px;'>🔐 Secure Vault</h1>
-            <p style='font-size: 18px; color: #6c757d;'>Your personal encryption solution</p>
+            <p style='font-size: 18px; color: var(--text-muted);'>Your personal encryption solution</p>
         </div>
         """, unsafe_allow_html=True)
     
@@ -452,7 +495,7 @@ def register_ui():
         st.markdown("""
         <div style='padding: 20px 0;'>
             <h1 style='color: #2575fc; margin-bottom: 10px;'>📝 Create Account</h1>
-            <p style='font-size: 18px; color: #6c757d;'>Join Secure Vault today</p>
+            <p style='font-size: 18px; color: var(--text-muted);'>Join Secure Vault today</p>
         </div>
         """, unsafe_allow_html=True)
     
