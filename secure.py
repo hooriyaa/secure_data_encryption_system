@@ -138,7 +138,7 @@ def apply_custom_styles():
             --dark-bg: #ffffff;
             --darker-bg: #f8f9fa;
             --card-bg: #ffffff;
-            --text: #f7f5fa;
+            --text: #31333F;
             --text-muted: #6c757d;
         }
         
@@ -410,6 +410,7 @@ def apply_custom_styles():
     }
     </style>
     """, unsafe_allow_html=True)
+
 
 def login_ui():
     apply_custom_styles()
