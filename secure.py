@@ -612,8 +612,8 @@ def home_page():
             <div class='card'>
                 <h4>🔒 Encryption Tips</h4>
                 <ul>
-                    <li>Use a strong, unique passkey that you can remember.</li>
-                    <li>Never share your passkey with anyone.</li>
+                    <li>Use a strong, unique passkey that you can remember</li>
+                    <li>Never share your passkey with anyone</li>
                     <li>The same passkey is required to decrypt your data</li>
                     <li>For maximum security, use a passphrase instead of a simple password</li>
                 </ul>
