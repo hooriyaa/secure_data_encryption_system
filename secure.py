@@ -147,6 +147,49 @@ def apply_custom_styles():
             --text-muted: #6c757d;
         }
         
+        /* Sidebar in light mode */
+        [data-testid="stSidebar"] {
+            background: #ffffff !important;
+            border-right: 1px solid #e9ecef !important;
+        }
+        
+        /* Sidebar header in light mode */
+        .sidebar-header {
+            border-bottom: 1px solid #e9ecef !important;
+        }
+        
+        /* Sidebar navigation items in light mode */
+        [data-testid="stSidebarNav"] > div > ul > li > div {
+            background-color: transparent !important;
+            color: var(--text) !important;
+            border-left: 3px solid transparent;
+        }
+        
+        [data-testid="stSidebarNav"] > div > ul > li > div:hover {
+            background-color: #f8f9fa !important;
+            border-left: 3px solid var(--primary);
+        }
+        
+        [data-testid="stSidebarNav"] > div > ul > li > div > a {
+            color: var(--text) !important;
+        }
+        
+        /* Selected menu item in light mode */
+        [data-testid="stSidebarNav"] > div > ul > li > div[data-baseweb="radio"] {
+            background-color: #f8f9fa !important;
+            border-left: 3px solid var(--primary);
+        }
+        
+        /* Sidebar divider in light mode */
+        .sidebar-divider {
+            background: #e9ecef !important;
+        }
+        
+        /* User avatar in light mode */
+        .user-avatar {
+            color: white !important;
+        }
+        
         /* Input fields in light mode */
         .stTextInput input, .stTextArea textarea {
             background-color: var(--darker-bg) !important;
@@ -158,25 +201,6 @@ def apply_custom_styles():
         .card {
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             border: 1px solid #e9ecef;
-        }
-        
-        /* Sidebar in light mode */
-        [data-testid="stSidebar"] {
-            background: #f8f9fa !important;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-        }
-        
-        /* Sidebar navigation items in light mode */
-        [data-testid="stSidebarNav"] > div > ul > li > div {
-            background-color: rgba(0,0,0,0.05) !important;
-        }
-        
-        [data-testid="stSidebarNav"] > div > ul > li > div:hover {
-            background-color: rgba(0,0,0,0.1) !important;
-        }
-        
-        [data-testid="stSidebarNav"] > div > ul > li > div > a {
-            color: var(--text) !important;
         }
     }
     
@@ -599,10 +623,10 @@ def home_page():
             <div class='card'>
                 <h4>🔒 Encryption Tips</h4>
                 <ul>
-                    <li>Use a strong, unique passkey that you can remember.</li>
-                    <li>Never share your passkey with anyone.</li>
-                    <li>The same passkey is required to decrypt your data.</li>
-                    <li>For maximum security, use a passphrase instead of a simple password.</li>
+                    <li>Use a strong, unique passkey that you can remember</li>
+                    <li>Never share your passkey with anyone</li>
+                    <li>The same passkey is required to decrypt your data</li>
+                    <li>For maximum security, use a passphrase instead of a simple password</li>
                 </ul>
             </div>
             """, unsafe_allow_html=True)
