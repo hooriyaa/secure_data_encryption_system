@@ -132,8 +132,14 @@ def apply_custom_styles():
         --warning: #fd7e14;
         --info: #17a2b8;
     }
+
+            /* Light theme  */     
+    @media (prefers-color-scheme: light) {
+        .stButton>button {
+            color: white !important;
+        }
+    }           
     
-    /* Light theme fixes */
     @media (prefers-color-scheme: light) {
         :root {
             --dark-bg: #ffffff;
@@ -183,10 +189,7 @@ def apply_custom_styles():
         [data-testid="stSidebar"] * {
             color: white !important;
         }
-                /* Buttons */
-        .stButton>button {
-            color: white !important;
-        }
+                
     }
     
     /* Dark theme (unchanged) */
@@ -567,7 +570,7 @@ def home_page():
             <div class='card'>
                 <h4>🔒 Encryption Tips</h4>
                 <ul>
-                    <li>Use a strong, unique passkey that you can remember</li>
+                    <li>Use a strong, unique passkey that you can remember.</li>
                     <li>Never share your passkey with anyone</li>
                     <li>The same passkey is required to decrypt your data</li>
                     <li>For maximum security, use a passphrase instead of a simple password</li>
