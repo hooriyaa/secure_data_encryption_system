@@ -133,29 +133,41 @@ def apply_custom_styles():
         --info: #17a2b8;
     }
     
-    /* Light theme overrides */
+    /* Light theme fixes */
     @media (prefers-color-scheme: light) {
         :root {
             --dark-bg: #ffffff;
             --darker-bg: #f8f9fa;
             --card-bg: #ffffff;
-            --text: #31333F;
+            --text: #000000;
             --text-muted: #6c757d;
+        }
+        
+        /* Force all text to black */
+        body, p, h1, h2, h3, h4, h5, h6, div, span, label {
+            color: #000000 !important;
         }
         
         /* Input fields */
         .stTextInput input, 
         .stTextArea textarea {
-            color: var(--text) !important;
-            background-color: var(--dark-bg) !important;
+            color: #000000 !important;
+            background-color: white !important;
             border: 1px solid #ced4da !important;
         }
         
-        /* Placeholder text */
+        /* Placeholders */
         .stTextInput input::placeholder,
         .stTextArea textarea::placeholder {
-            color: var(--text-muted) !important;
+            color: #6c757d !important;
             opacity: 1 !important;
+        }
+        
+        /* Cards */
+        .card {
+            background-color: white !important;
+            color: #000000 !important;
+            border: 1px solid #e0e0e0 !important;
         }
         
         /* Buttons */
@@ -163,19 +175,23 @@ def apply_custom_styles():
             color: white !important;
         }
         
-        /* Cards and text */
-        .card,
-        .card * {
-            color: var(--text) !important;
+        /* Sidebar */
+        [data-testid="stSidebar"] {
+            background: #f8f9fa !important;
+            border-right: 1px solid #e0e0e0 !important;
         }
         
-        /* Sidebar */
         [data-testid="stSidebar"] * {
-            color: var(--text) !important;
+            color: #000000 !important;
+        }
+        
+        /* Radio buttons */
+        [data-testid="stSidebarNav"] > div > ul > li > div[data-baseweb="radio"] {
+            background-color: rgba(106, 17, 203, 0.1) !important;
         }
     }
     
-    /* Dark theme styles (unchanged) */
+    /* Dark theme (unchanged) */
     [data-testid="stSidebar"] {
         background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%) !important;
         color: white !important;
