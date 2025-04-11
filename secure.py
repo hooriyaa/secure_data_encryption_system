@@ -460,7 +460,7 @@ def register_ui():
 
             if submitted:
                 if not username or not password or not confirm:
-                    st.error("All fields are required")
+                    st.error("All fields are required.")
                 elif password != confirm:
                     st.error("Passwords do not match")
                 elif get_user(username):
