@@ -139,18 +139,22 @@ def apply_custom_styles():
             --dark-bg: #ffffff;
             --darker-bg: #f8f9fa;
             --card-bg: #ffffff;
-            --text: #000000;  /* Black text for main content */
+            --text: #000000;
             --text-muted: #6c757d;
         }
         
-        /* Main content text */
+        /* Main content */
+        .main .block-container {
+            background: white !important;
+        }
+        
         body, p, h1, h2, h3, h4, h5, h6, div, span, label {
             color: var(--text) !important;
         }
         
         /* Cards */
         .card {
-            background-color: white !important;
+            background: white !important;
             color: #000000 !important;
             border: 1px solid #e0e0e0 !important;
         }
@@ -163,31 +167,29 @@ def apply_custom_styles():
             border: 1px solid #ced4da !important;
         }
         
-        /* Placeholder text */
+        /* Placeholders */
         .stTextInput input::placeholder,
         .stTextArea textarea::placeholder {
             color: #6c757d !important;
             opacity: 1 !important;
         }
         
-        /* Buttons - white text on colored background */
+        /* Buttons */
         .stButton>button {
             color: white !important;
         }
         
-        /* Sidebar - keep dark in light theme */
+        /* Sidebar - keep dark */
         [data-testid="stSidebar"] {
             background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%) !important;
-            color: white !important;
         }
         
-        /* All sidebar text white */
         [data-testid="stSidebar"] * {
             color: white !important;
         }
     }
     
-    /* Original dark theme styles (completely unchanged) */
+    /* Dark theme (unchanged) */
     [data-testid="stSidebar"] {
         background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%) !important;
         color: white !important;
@@ -566,9 +568,9 @@ def home_page():
                 <h4>🔒 Encryption Tips</h4>
                 <ul>
                     <li>Use a strong, unique passkey that you can remember.</li>
-                    <li>Never share your passkey with anyone.</li>
-                    <li>The same passkey is required to decrypt your data.</li>
-                    <li>For maximum security, use a passphrase instead of a simple password.</li>
+                    <li>Never share your passkey with anyone</li>
+                    <li>The same passkey is required to decrypt your data</li>
+                    <li>For maximum security, use a passphrase instead of a simple password</li>
                 </ul>
             </div>
             """, unsafe_allow_html=True)
