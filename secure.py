@@ -133,6 +133,11 @@ def apply_custom_styles():
         --info: #17a2b8;
     }
     
+    @media (prefers-color-scheme: light) {
+        .stButton>button {
+            color: white !important;
+        }
+    }           
                            
     @media (prefers-color-scheme: light) {
         :root {
@@ -150,11 +155,7 @@ def apply_custom_styles():
         
         body, p, h1, h2, h3, h4, h5, h6, div, span, label {
             color: var(--text) !important;
-        }
-                
-        .stButton>button {
-            color: white;
-        }       
+        }     
         
         /* Cards */
         .card {
@@ -186,11 +187,7 @@ def apply_custom_styles():
         
         [data-testid="stSidebar"] * {
             color: white !important;
-        }
-                
-    .stButton>button {
-            color: white;
-        }              
+        }          
     }
     
     /* Dark theme (unchanged) */
