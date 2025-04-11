@@ -133,19 +133,34 @@ def apply_custom_styles():
         --info: #17a2b8;
     }
     
-    /* Light theme fixes ONLY */
+    /* Light theme fixes */
     @media (prefers-color-scheme: light) {
-        :root {
-            --dark-bg: #ffffff;
-            --darker-bg: #f8f9fa;
-            --card-bg: #ffffff;
-            --text: #000000;  /* Black text for light theme */
-            --text-muted: #6c757d;
+        /* Main content area */
+        .main .block-container {
+            background: white !important;
         }
         
-        /* Main content text */
-        body, p, h1, h2, h3, h4, h5, h6, div, span, label {
-            color: var(--text) !important;
+        /* Sidebar - keep dark in light theme */
+        [data-testid="stSidebar"] {
+            background: linear-gradient(180deg, var(--dark-bg) 0%, var(--darker-bg) 100%) !important;
+            color: white !important;
+        }
+        
+        /* All sidebar text white */
+        [data-testid="stSidebar"] * {
+            color: white !important;
+        }
+        
+        /* Buttons - white text */
+        .stButton>button {
+            color: white !important;
+        }
+        
+        /* Cards - white background with dark text */
+        .card {
+            background: white !important;
+            color: #000000 !important;
+            border: 1px solid #e0e0e0 !important;
         }
         
         /* Input fields */
@@ -161,44 +176,6 @@ def apply_custom_styles():
         .stTextArea textarea::placeholder {
             color: #6c757d !important;
             opacity: 1 !important;
-        }
-        
-        /* Cards */
-        .card {
-            background-color: white !important;
-            color: #000000 !important;
-            border: 1px solid #e0e0e0 !important;
-        }
-        
-        /* Buttons - white text on colored background */
-        .stButton>button {
-            color: white !important;
-        }
-        
-        /* Sidebar - light background with black text */
-        [data-testid="stSidebar"] {
-            background: #f8f9fa !important;
-            border-right: 1px solid #e0e0e0 !important;
-        }
-        
-        [data-testid="stSidebar"] * {
-            color: #000000 !important;
-        }
-        
-        /* Sidebar navigation items */
-        [data-testid="stSidebarNav"] > div > ul > li > div {
-            color: #000000 !important;
-        }
-        
-        /* Selected sidebar item */
-        [data-testid="stSidebarNav"] > div > ul > li > div[data-baseweb="radio"] {
-            background-color: rgba(106, 17, 203, 0.1) !important;
-            color: #000000 !important;
-        }
-        
-        /* User avatar in sidebar */
-        .user-avatar {
-            color: white !important;
         }
     }
     
@@ -580,10 +557,10 @@ def home_page():
             <div class='card'>
                 <h4>🔒 Encryption Tips</h4>
                 <ul>
-                    <li>Use a strong, unique passkey that you can remember</li>
-                    <li>Never share your passkey with anyone</li>
-                    <li>The same passkey is required to decrypt your data</li>
-                    <li>For maximum security, use a passphrase instead of a simple password</li>
+                    <li>Use a strong, unique passkey that you can remember.</li>
+                    <li>Never share your passkey with anyone.</li>
+                    <li>The same passkey is required to decrypt your data.</li>
+                    <li>For maximum security, use a passphrase instead of a simple password.</li>
                 </ul>
             </div>
             """, unsafe_allow_html=True)
