@@ -153,7 +153,7 @@ def apply_custom_styles():
         }
                 
         .stButton>button {
-            color: white !important;
+            color: white;
         }       
         
         /* Cards */
