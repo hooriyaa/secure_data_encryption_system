@@ -133,6 +133,7 @@ def apply_custom_styles():
         --info: #17a2b8;
     }
     
+    /* Light theme overrides */
     @media (prefers-color-scheme: light) {
         :root {
             --dark-bg: #ffffff;
@@ -142,29 +143,39 @@ def apply_custom_styles():
             --text-muted: #6c757d;
         }
         
-        .stTextInput input, .stTextArea textarea {
-            color: #31333F !important;
-            background-color: white !important;
+        /* Input fields */
+        .stTextInput input, 
+        .stTextArea textarea {
+            color: var(--text) !important;
+            background-color: var(--dark-bg) !important;
             border: 1px solid #ced4da !important;
         }
         
-        .stTextInput input::placeholder, .stTextArea textarea::placeholder {
-            color: #6c757d !important;
+        /* Placeholder text */
+        .stTextInput input::placeholder,
+        .stTextArea textarea::placeholder {
+            color: var(--text-muted) !important;
+            opacity: 1 !important;
         }
         
+        /* Buttons */
         .stButton>button {
             color: white !important;
         }
         
-        .card, .card * {
+        /* Cards and text */
+        .card,
+        .card * {
             color: var(--text) !important;
         }
         
+        /* Sidebar */
         [data-testid="stSidebar"] * {
             color: var(--text) !important;
         }
     }
     
+    /* Dark theme styles (unchanged) */
     [data-testid="stSidebar"] {
         background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%) !important;
         color: white !important;
@@ -460,7 +471,7 @@ def register_ui():
 
             if submitted:
                 if not username or not password or not confirm:
-                    st.error("All fields are required.")
+                    st.error("All fields are required")
                 elif password != confirm:
                     st.error("Passwords do not match")
                 elif get_user(username):
