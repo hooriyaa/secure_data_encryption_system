@@ -142,96 +142,26 @@ def apply_custom_styles():
             --text-muted: #6c757d;
         }
         
-        [data-testid="stSidebar"] {
-            background: white !important;
-            border-right: 1px solid #e0e0e0 !important;
-            padding: 16px !important;
+        .stTextInput input, .stTextArea textarea {
+            color: #31333F !important;
+            background-color: white !important;
+            border: 1px solid #ced4da !important;
+        }
+        
+        .stTextInput input::placeholder, .stTextArea textarea::placeholder {
+            color: #6c757d !important;
+        }
+        
+        .stButton>button {
+            color: white !important;
+        }
+        
+        .card, .card * {
             color: var(--text) !important;
         }
         
         [data-testid="stSidebar"] * {
             color: var(--text) !important;
-        }
-        
-        [data-testid="stSidebarNav"] > div > ul > li > div > a,
-        [data-testid="stSidebarNav"] > div > ul > li > div > span {
-            color: var(--text) !important;
-        }
-        
-        [data-testid="stSidebarNav"] > div > ul > li > div:hover > a,
-        [data-testid="stSidebarNav"] > div > ul > li > div:hover > span {
-            color: var(--primary) !important;
-        }
-        
-        [data-testid="stSidebarNav"] > div > ul > li > div[data-baseweb="radio"] > a,
-        [data-testid="stSidebarNav"] > div > ul > li > div[data-baseweb="radio"] > span {
-            color: var(--primary) !important;
-            font-weight: 600;
-        }
-        
-        .sidebar-header {
-            text-align: center;
-            margin-bottom: 24px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid #e0e0e0 !important;
-        }
-        
-        .user-avatar {
-            width: 50px !important;
-            height: 50px !important;
-            font-size: 20px !important;
-            margin-bottom: 8px !important;
-            color: white !important;
-        }
-        
-        .user-name {
-            font-size: 16px !important;
-            font-weight: 600;
-            margin-bottom: 0 !important;
-            color: var(--text) !important;
-        }
-        
-        [data-testid="stSidebarNav"] > div > ul > li > div {
-            background: transparent !important;
-            color: var(--text) !important;
-            padding: 8px 0 !important;
-            margin: 4px 0 !important;
-            border-radius: 0 !important;
-            border-left: none !important;
-        }
-        
-        [data-testid="stSidebarNav"] > div > ul > li > div:hover {
-            background: transparent !important;
-            color: var(--primary) !important;
-        }
-        
-        [data-testid="stSidebarNav"] > div > ul > li > div[data-baseweb="radio"] {
-            background: transparent !important;
-            color: var(--primary) !important;
-            font-weight: 600;
-        }
-        
-        .sidebar-divider {
-            background: #e0e0e0 !important;
-            margin: 24px 0 !important;
-        }
-        
-        .sidebar-footer {
-            font-size: 12px !important;
-            color: var(--text-muted) !important;
-            margin-top: 24px !important;
-            opacity: 1 !important;
-        }
-        
-        .stTextInput input, .stTextArea textarea {
-            background-color: var(--darker-bg) !important;
-            color: var(--text) !important;
-            border: 1px solid #ced4da !important;
-        }
-        
-        .card {
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            border: 1px solid #e9ecef;
         }
     }
     
