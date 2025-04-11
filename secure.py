@@ -187,6 +187,10 @@ def apply_custom_styles():
         [data-testid="stSidebar"] * {
             color: white !important;
         }
+                
+    .stButton>button {
+            color: white;
+        }              
     }
     
     /* Dark theme (unchanged) */
