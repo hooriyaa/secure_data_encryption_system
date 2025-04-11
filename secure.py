@@ -581,7 +581,7 @@ def home_page():
         st.markdown("""
         <div class="sidebar-footer">
             Secure Vault v1.0<br>
-            © 2023 All rights reserved
+            © 2025 All rights reserved
         </div>
         """, unsafe_allow_html=True)
     
