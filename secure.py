@@ -118,7 +118,7 @@ init_db()
 # ------------------ UI Functions ------------------
 def apply_custom_styles():
     st.markdown("""
-       <style>
+    <style>
     :root {
         --primary: #6a11cb;
         --secondary: #2575fc;
@@ -294,21 +294,6 @@ def apply_custom_styles():
         border: 1px solid #2d3748 !important;
         border-radius: 8px;
         padding: 10px;
-    }
-    
-    .stButton>button {
-        border: none;
-        border-radius: 8px;
-        padding: 10px 20px;
-        font-weight: 600;
-        transition: all 0.3s;
-        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-        color: white;
-    }
-    
-    .stButton>button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
     
     .stAlert .st-b7 {
@@ -581,7 +566,7 @@ def home_page():
             <div class='card'>
                 <h4>🔒 Encryption Tips</h4>
                 <ul>
-                    <li>Use a strong, unique passkey that you can remember</li>
+                    <li>Use a strong, unique passkey that you can remember.</li>
                     <li>Never share your passkey with anyone</li>
                     <li>The same passkey is required to decrypt your data</li>
                     <li>For maximum security, use a passphrase instead of a simple password</li>
