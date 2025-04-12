@@ -153,9 +153,13 @@ def apply_custom_styles():
         color: white !important;
     }
     
-    .button p {
+    button p {
         color: white !important;
     }
+
+    div.stButton > button:first-child {
+        color: black !important;
+    }                           
     
     /* Light theme overrides */
     @media (prefers-color-scheme: light) {
@@ -201,6 +205,7 @@ def apply_custom_styles():
         [data-testid="stSidebar"] * {
             color: white !important;
         }
+            
     }
     
     /* Dark theme (unchanged) */
