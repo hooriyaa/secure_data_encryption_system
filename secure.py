@@ -118,7 +118,7 @@ init_db()
 # ------------------ UI Functions ------------------
 def apply_custom_styles():
     st.markdown("""
-    <style>
+       <style>
     :root {
         --primary: #6a11cb;
         --secondary: #2575fc;
@@ -133,12 +133,7 @@ def apply_custom_styles():
         --info: #17a2b8;
     }
     
-    @media (prefers-color-scheme: light) {
-        .stButton>button {
-            color: white !important;
-        }
-    }           
-                           
+    /* Light theme overrides */
     @media (prefers-color-scheme: light) {
         :root {
             --dark-bg: #ffffff;
@@ -179,15 +174,10 @@ def apply_custom_styles():
             opacity: 1 !important;
         }
         
-        
-        /* Sidebar - keep dark */
-        [data-testid="stSidebar"] {
-            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%) !important;
-        }
-        
-        [data-testid="stSidebar"] * {
+        /* Buttons - ensure text is white in both themes */
+        .stButton>button {
             color: white !important;
-        }          
+        }
     }
     
     /* Dark theme (unchanged) */
@@ -568,7 +558,7 @@ def home_page():
             <div class='card'>
                 <h4>🔒 Encryption Tips</h4>
                 <ul>
-                    <li>Use a strong, unique passkey that you can remember</li>
+                    <li>Use a strong, unique passkey that you can remember.</li>
                     <li>Never share your passkey with anyone</li>
                     <li>The same passkey is required to decrypt your data</li>
                     <li>For maximum security, use a passphrase instead of a simple password</li>
