@@ -201,11 +201,7 @@ def apply_custom_styles():
         
         [data-testid="stSidebar"] * {
             color: white !important;
-        }
-                
-        div.stButton > button:first-child {
-            color: black !important;
-        }   
+        } 
                       
     }
                 
@@ -391,6 +387,11 @@ def apply_custom_styles():
         text-align: center;
         padding: 40px 20px;
     }
+
+    div.stButton > button { 
+        color: black;
+    }            
+
     </style>
     """, unsafe_allow_html=True)
 
