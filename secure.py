@@ -133,6 +133,30 @@ def apply_custom_styles():
         --info: #17a2b8;
     }
     
+    /* Base button styles - applies to all themes */
+    .stButton>button {
+        color: white !important;
+        border: none !important;
+        border-radius: 8px !important;
+        padding: 10px 20px !important;
+        font-weight: 600 !important;
+        transition: all 0.3s !important;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%) !important;
+    }
+    
+    .stButton>button:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;
+    }
+    
+    .stButton>button:focus {
+        color: white !important;
+    }
+    
+    .stButton>button span {
+        color: white !important;
+    }
+    
     /* Light theme overrides */
     @media (prefers-color-scheme: light) {
         :root {
@@ -143,23 +167,20 @@ def apply_custom_styles():
             --text-muted: #6c757d;
         }
         
-        /* Main content */
         .main .block-container {
             background: white !important;
         }
         
         body, p, h1, h2, h3, h4, h5, h6, div, span, label {
             color: var(--text) !important;
-        }     
+        }
         
-        /* Cards */
         .card {
             background: white !important;
             color: #000000 !important;
             border: 1px solid #e0e0e0 !important;
         }
         
-        /* Input fields */
         .stTextInput input, 
         .stTextArea textarea {
             color: #000000 !important;
@@ -167,15 +188,17 @@ def apply_custom_styles():
             border: 1px solid #ced4da !important;
         }
         
-        /* Placeholders */
         .stTextInput input::placeholder,
         .stTextArea textarea::placeholder {
             color: #6c757d !important;
             opacity: 1 !important;
         }
         
-        /* Buttons - ensure text is white in both themes */
-        .stButton>button {
+        [data-testid="stSidebar"] {
+            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%) !important;
+        }
+        
+        [data-testid="stSidebar"] * {
             color: white !important;
         }
     }
