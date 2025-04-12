@@ -153,11 +153,7 @@ def apply_custom_styles():
         color: white !important;
     }
     
-    button p {
-        color: white !important;
-    }
-                        
-    
+                           
     /* Light theme overrides */
     @media (prefers-color-scheme: light) {
         :root {
@@ -201,7 +197,11 @@ def apply_custom_styles():
         
         [data-testid="stSidebar"] * {
             color: white !important;
-        } 
+        }
+                
+        button p {
+            color: white !important;
+        }        
                       
     }
                 
@@ -387,10 +387,7 @@ def apply_custom_styles():
         text-align: center;
         padding: 40px 20px;
     }
-
-    div.stButton > button { 
-        color: black;
-    }            
+           
 
     </style>
     """, unsafe_allow_html=True)
