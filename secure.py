@@ -153,7 +153,7 @@ def apply_custom_styles():
         color: white !important;
     }
     
-    button span {
+    .button p {
         color: white !important;
     }
     
